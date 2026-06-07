@@ -56,7 +56,7 @@ async function createUser(req, res, next) {
   try {
     const {
       name,
-      code = null,       // ✅ nhận mã sinh viên
+      code = null,       // nhận mã sinh viên
       email,
       password,
       role = 'student',
@@ -73,7 +73,7 @@ async function createUser(req, res, next) {
       return res.status(400).json({ message: 'Email đã tồn tại.' });
     }
 
-    // ✅ Kiểm tra trùng code nếu có
+    //  Kiểm tra trùng code nếu có
     if (code) {
       const existingCode = await User.findOne({ where: { code } });
       if (existingCode) {
@@ -115,7 +115,7 @@ async function updateUser(req, res, next) {
       if (dup) return res.status(400).json({ message: 'Email đã tồn tại.' });
     }
 
-    // ✅ Kiểm tra trùng code
+    //  Kiểm tra trùng code
     if (updateData.code) {
       const dup = await User.findOne({
         where: { code: updateData.code, id: { [Op.ne]: req.params.id } },

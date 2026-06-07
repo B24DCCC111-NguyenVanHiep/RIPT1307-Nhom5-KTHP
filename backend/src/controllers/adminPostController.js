@@ -35,7 +35,7 @@ async function getPosts(req, res, next) {
   }
 }
 
-// ✅ THÊM: Xem chi tiết bài viết (tiêu đề, nội dung, tag, bình luận)
+//  Xem chi tiết bài viết (tiêu đề, nội dung, tag, bình luận)
 async function getPostById(req, res, next) {
   try {
     const post = await Post.findByPk(req.params.id, {
