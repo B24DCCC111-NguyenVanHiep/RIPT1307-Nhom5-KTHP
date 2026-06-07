@@ -25,6 +25,9 @@ frontend/.umi-test/
 *.tsbuildinfo
 frontend/.cache/
 
+
+
+# ─── Logs ───────────────────────────────────────────────────
 logs/
 *.log
 npm-debug.log*
@@ -41,3 +44,24 @@ pnpm-debug.log*
 Thumbs.db
 desktop.ini
 ehthumbs.db
+
+# ─── IDE / Editor ───────────────────────────────────────────
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ─── Testing ────────────────────────────────────────────────
+coverage/
+.nyc_output/
+/test-results/
+
+# ─── Misc ───────────────────────────────────────────────────
+*.local
+*.tmp
+*.temp
+.parcel-cache/
