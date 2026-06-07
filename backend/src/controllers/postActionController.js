@@ -13,7 +13,8 @@ async function createPost(req, res, next) {
       status: 'active',
     });
 
-    // Gắn tags
+HEAD
+
     const tagRecords = [];
     if (Array.isArray(tags) && tags.length > 0) {
       for (const rawTag of tags) {
@@ -51,8 +52,6 @@ async function createPost(req, res, next) {
       `Bài viết "${title}" đã được đăng thành công.`,
     );
 
-    // ✅ Gửi email thông báo bài đăng mới đến tất cả giảng viên
-    // (hoặc có thể gửi cho followers sau này — hiện tại gửi cho giảng viên cùng khoa)
     try {
       const { User: UserModel } = require('../models');
       const { sendEmail } = require('../utils/notificationService');
@@ -78,8 +77,7 @@ async function createPost(req, res, next) {
         );
       }
     } catch (emailErr) {
-      // Không block response nếu email lỗi
-      console.warn('Email notify lecturers failed:', emailErr.message);
+         console.warn('Email notify lecturers failed:', emailErr.message);
     }
 
     await post.reload({
@@ -211,11 +209,9 @@ async function votePost(req, res, next) {
 
     if (existingVote) {
       if (existingVote.voteType === direction) {
-        // Bỏ vote
         await existingVote.destroy();
         post.votes -= delta;
       } else {
-        // Đổi chiều vote
         const oldDelta = existingVote.voteType === 'up' ? 1 : -1;
         post.votes = post.votes - oldDelta + delta;
         existingVote.voteType = direction;

@@ -1,4 +1,3 @@
-// ✨ CẬP NHẬT FILE: backend/routes/forum.js
 const express = require('express');
 const { authenticate, optionalAuth } = require('../middlewares/authMiddleware');
 const postController = require('../controllers/postController');
@@ -11,7 +10,6 @@ const forumValidator = require('../validators/forumValidator');
 
 const router = express.Router();
 
-// Public routes
 router.get(
   '/posts',
   forumValidator.search,
@@ -25,7 +23,6 @@ router.get('/posts/:postId/comments', optionalAuth, commentController.getComment
 
 router.get('/tags', tagController.getTags);
 
-// Authenticated routes
 router.post('/posts',
   authenticate,
   forumValidator.createPost,

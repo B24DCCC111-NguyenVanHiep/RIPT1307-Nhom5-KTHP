@@ -15,7 +15,10 @@ export default function HomePage() {
       const d = res.data as any;
       setTotal(d.pagination?.total || 0);
     } catch {
+<<<<<<< HEAD
+=======
       // ignore
+>>>>>>> main
     }
   }, []);
 
