@@ -13,6 +13,8 @@ async function createPost(req, res, next) {
       status: 'active',
     });
 
+HEAD
+
     const tagRecords = [];
     if (Array.isArray(tags) && tags.length > 0) {
       for (const rawTag of tags) {
@@ -49,7 +51,6 @@ async function createPost(req, res, next) {
       post.id,
       `Bài viết "${title}" đã được đăng thành công.`,
     );
-
 
     try {
       const { User: UserModel } = require('../models');

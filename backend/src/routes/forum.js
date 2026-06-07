@@ -10,7 +10,6 @@ const forumValidator = require('../validators/forumValidator');
 
 const router = express.Router();
 
-
 router.get(
   '/posts',
   forumValidator.search,
